@@ -25,6 +25,21 @@
         - Sprint_Fwd_Rifle を指定する
         - 詳細 - Loop Animation にチェック
     - ここでは 条件文は C++ で書いてあるので、ステートを繋ぐだけで良い
+- TODO エイリアスを試す
+
+### 上半身ブレンド
+- AnimGraph 内
+    - 「新規保存のキャッシュされたポーズ」を作成
+        - ここでは SavedPoseという名前にした、入力に Locomotion の出力を接続
+    - 「ボーン毎のレイヤードブレンド」を作成
+        - インスペクタ - コンフィグ - Layer Setup - インデックス[0] - Branch Filters を増やす
+        - インデックス[0] - Bone Name に "spine_01" を指定
+        - 「キャッシュされたポーズを使用」を作成、「ボーン毎のレイヤードブレンド」の Base Pose へ接続
+        - 「スロット 'Default Slot'」を作成
+            - 出力を 「ボーン毎のレイヤードブレンド」の Blend Poses0 へ接続
+            - 「キャッシュされたポーズを使用」を作成、「スロット 'Default Slot'」の入力へ接続
+            - Slot Name を UpperBody へ変更 (UpperBody スロットが無い場合は追加する)
+        ![画像](UpperBody.png)
 
 ## ブレンドスペース
 - BS_Stand を作成
