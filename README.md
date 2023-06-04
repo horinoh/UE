@@ -14,6 +14,16 @@
 - AGameModeBase 等を継承したクラスを作成
 - 編集 - プロジェクト設定 - マップ&モード - デフォルトのゲームモード に上記で作成したクラスを指定する
 
+## スターターコンテンツを自動追加
+- Config/DefaultGame.ini に以下のように記述する
+    ~~~
+    [StartupActions]
+    bAddPacks=True
+    InsertPack=(PackSource="StarterContent.upack",PackName="StarterContent")
+    ~~~
+
 ## [インプット](https://github.com/horinoh/UE/tree/master/Input)
 
 ## [キャラクター](https://github.com/horinoh/UE/tree/master/Character)
+
+## [Scesium](https://github.com/horinoh/UE/tree/master/Scecium)
