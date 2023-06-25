@@ -22,6 +22,34 @@
     InsertPack=(PackSource="StarterContent.upack",PackName="StarterContent")
     ~~~
 
+## C++ から参照
+### BP クラス
+- リファレンスをコピーで得られる文字列から '' 内だけ抜き出し、さらに "_C" を付け加えたものを指定する
+    ~~~
+    "AAA'BBB.CCC'" -> "BBB.CCC_C"
+    ~~~
+    - 例
+    ~~~
+    static ConstructorHelpers::FClassFinder<UObject> PawnClass(TEXT("BBB.CCC_C"));
+	if (PawnClass.Succeeded())
+	{
+		DefaultPawnClass = PawnClass.Class;
+	}
+    ~~~
+### アニメーションBP
+- リファレンスをコピーで得られる文字列から '' 内だけ抜き出し、さらに . 以降を削除したものを指定する
+    ~~~
+    "AAA'BBB.CCC'" -> "BBB"
+    ~~~
+    - 例
+    ~~~
+    static ConstructorHelpers::FClassFinder<UObject> AnimBPClass(TEXT("BBB"));
+	if (AnimBPClass.Succeeded())
+	{
+		SkelMeshComp->SetAnimInstanceClass(AnimBPClass.Class);
+	}
+    ~~~
+
 ## [インプット](https://github.com/horinoh/UE/tree/master/Input)
 
 ## [キャラクター](https://github.com/horinoh/UE/tree/master/Character)
